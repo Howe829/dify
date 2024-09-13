@@ -656,6 +656,14 @@ class Embedding(db.Model):
     def get_embedding(self) -> list[float]:
         return pickle.loads(self.embedding)
 
+    def dict(self):
+        return {
+            "model_name": self.model_name,
+            "hash": self.hash,
+            "provider_name": self.provider_name,
+            "embedding": self.embedding
+        }
+
 
 class DatasetCollectionBinding(db.Model):
     __tablename__ = 'dataset_collection_bindings'
